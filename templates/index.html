@@ -1,0 +1,158 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>WebProject</title>
+  <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css'><link rel="stylesheet" href="{% static './style.css' %}">
+  <style>
+  div {
+    margin-bottom: 2px;
+    
+  }
+  label {
+    display: inline-block;
+    width: 150px;
+    margin-right: 1px;
+    padding-right: 20px;
+  }
+  #redirect{
+    margin-left: 210px;
+  }
+  .label4{
+    padding-left: 2px;
+  }
+  
+  :root {
+    --darkgreen: #0000CD;
+    --white: #fff;
+  }
+  
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  body,
+  .tabs-to-dropdown .dropdown-toggle,
+  .tabs-to-dropdown .dropdown-item {
+    font-size: 1.3rem;
+    background-color: #EBF4FA;
+  }
+  
+  .tabs-to-dropdown .nav-wrapper {
+    padding: 15px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.12);
+  }
+  
+  .tabs-to-dropdown .nav-wrapper a {
+    color: var(--darkgreen);
+  }
+  
+  .tabs-to-dropdown .nav-pills .nav-link.active {
+    background-color: var(--darkgreen);
+  }
+  
+  .tabs-to-dropdown .nav-pills li:not(:last-child) {
+    margin-right: 30px;
+  }
+  
+  .tabs-to-dropdown .tab-content .container-fluid {
+    max-width: 1250px;
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+  
+  .tabs-to-dropdown .dropdown-menu {
+    border: none;
+    box-shadow: 0px 5px 14px rgba(0, 0, 0, 0.08);
+  }
+  
+  .tabs-to-dropdown .dropdown-item {
+    padding: 14px 28px;
+  }
+  
+  .tabs-to-dropdown .dropdown-item:active {
+    color: var(--white);
+  }
+  
+</style>
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="tabs-to-dropdown">
+  <div class="nav-wrapper d-flex align-items-center justify-content-between" style = "background-color:#5CB3FF; ">
+    <ul class="nav nav-pills d-none d-md-flex" id="pills-tab" role="tablist" >
+      <li class="nav-item" role="presentation">
+        <a class="nav-link active" id="pills-company-tab"  data-toggle="pill" href="#pills-company" role="tab" aria-controls="pills-company" aria-selected="true"><b>Form Content Tab</b></a>
+      </li>
+      <li class="nav-item" role="presentation">
+        <a class="nav-link" id="pills-product-tab" data-toggle="pill" href= "#pills-product" role="tab" aria-controls="pills-product" aria-selected="false"><b>Alignment Tab</b></a>
+      </li>
+      <li class="nav-item" role="presentation">
+        <a class="nav-link" id="pills-news-tab" data-toggle="pill" href="#pills-news" role="tab" aria-controls="pills-news" aria-selected="false"><b>Tabs</b></a>
+      </li>
+      
+    </ul>
+
+    
+  </div>
+
+
+  <div class="tab-content" id="pills-tabContent" >
+    <div class="tab-pane fade show active" id="pills-company" role="tabpanel" aria-labelledby="pills-company-tab">
+      <div class="container mt-5 pt-16 col-34">
+        <div class="form section">
+          <label class="label1" style="color:#0000CD">Forms</label>
+          <label style="margin-left: 299px; color:#0000CD" class="label4" >RedirectPath</label><br>
+          <input type="text" id="form" name="labelform" placeholder="Forms" />
+          
+          
+          <input type="text"  id="redirect" style="color:#0000CD" placeholder="Redirect Path" />
+      
+          <button style="margin-left: 150px; background-color: #488AC7;color:black;" id="button1" class="btn btn-success"><b>+</b></button>
+        </div>
+        <div>
+          <label class="label2" style="color:#0000CD">Field Name</label><br>
+          <input type="text" id="field1" name="labelfield" placeholder="Field Name" />
+
+          <button style="margin-left: 820px; background-color: #488AC7; color:black;" id="button2" class="btn btn-success"><b>+</b></button>
+        </div>
+        <div>
+          <label class="label3" style="color:#0000CD">Field Name</label><br>
+          <input type="text" id="field2" name="labelfield" placeholder="Field Name" />
+
+          <button style="margin-left: 820px; background-color: #488AC7; color:black;" id="button3" class="btn btn-success"><b>+</b></button>
+        </div>
+    </div>
+  </div>
+  
+
+  <div class="tab-pane fade" id="pills-product" role="tabpanel" aria-labelledby="pills-product-tab">
+      <div class="container-fluid">
+        
+        
+       
+      </div>
+  </div>
+
+  <div class="tab-pane fade" id="pills-news" role="tabpanel" aria-labelledby="pills-news-tab">
+      <div class="container-fluid">
+        
+        
+      </div>
+  </div>
+  
+    
+    
+<footer class="page-footer">
+  <span></span>
+ 
+</footer>
+<!-- partial -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script><script  src="{% static './script.js' %}"></script>
+
+</body>
+</html>
