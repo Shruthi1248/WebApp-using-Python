@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bootstrap Tabs Example</title>
+  <title>WebProject Tabs</title>
   <!-- Include Bootstrap CSS (you can download it or link from a CDN) -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
@@ -48,32 +48,14 @@
   #redirect{
     margin-left: 210px;
   }
-  .label4{
-    padding-left: 2px;
-  }
-  #field2{
-    margin-left: 14px;
-    height: 30px;
-  }
   #form{
     margin-left: 10px;
   }
-  #field1{
-    margin-left: 10px;
-    height:30px
-  }
-  #form{
-    margin-left: 10px;
-  }
-  .label2{
-    padding-left: 2px;
-  }
-  
  
 </style>
 </head>
 <body>
-<div class="container-fluid fixed-top mt-70" style="margin-left:1px;">
+<div class="container-fluid fixed-top mt-100" style="margin-left:1px;">
   <ul class="nav nav-tabs" id="myTabs" >
     <li class="nav-item">
       <a class="nav-link active m-3 px-5 fs-5" id="tab1" data-toggle="tab" href="#tab1content"><b>Form Creation</b></a>
@@ -86,120 +68,195 @@
     </li>
   </ul>
 
-  <div class="tab-content mt-3">
+  
     <div class="tab-pane fade show active" id="tab1content">
-      <div class="container mt-3 pt-10 col-14">
-      <div class="form section">
-        <label class="label1" style="color:black;"><b>Forms</b></label>
-        <label style="margin-left: 350px; color:black;" class="label4" ><b>Redirect Path</b></label><br>
-        <input type="text" id="form" name="labelform" placeholder="Forms" />       
-        <input type="text"  id="redirect" style="color:black" placeholder="Redirect Path" />  
-        <button style="margin-left: 150px; background-color: #92beab;;color:black;" id="button1" class="btn btn-success"><b>+</b></button>
-      </div>
-     <!--- <div id = "existing-container" >
-        <br>
-        <label class="label2" style="color:black" name="addingfield"><b>Field Name</b></label>
-        <label for="exampleSelect" name="addingselect" class="select box" style="margin-left: 300px;"><b>Selection Box:</b></label><br>
-        <div class="container mt-0">
-          <div class="row">
-            <input type="text" id="field1" placeholder="Field Name" />
-            <select class="form-control"  style="margin-left: 200px;width : 20%;" id="exampleSelect">
-              <option value="option1">Option 1</option>
-              <option value="option2">Option 2</option>
-              <option value="option3">Option 3</option>
-        
-            </select>
-          <button style="margin-left: 130px; background-color: #92beab; color:black;" id="button2" onclick="addDynamicField()" class="btn btn-success"><b>+</b></button>
-          
-      </div>
-    </div>   -->
+      <div class="container mt-2 pt-0 col-0">
+        <form id="formcontent">
+          <div class="row mb-1">
+            <div class="col-md-3">
+                <label for="forms" class="labels" style="color:black;">Forms</label>
+                <div class="inputs">
+                    <input type="text"  class="input-class" id="form" name="labelform" placeholder="Forms" >
+                </div>
+            </div>
+            <div class="col-md-3">
+                <label for="redirect" style="margin-left: 150px; color:black;" class="labels">Redirect path</label>
+              <div class="inputs">    
+                <input type="text" id="redirect" class="input-class" style="color:black; margin-left:150px;" placeholder="Redirect Path">
+            <div class="col-md-3">    
+                <button class="btn btn-success ms-1" style="margin-left: 450px; background-color: #92beab;color:black;" type="button" onclick="addFormContainer()"><b>+</b></button>     
+            </div>  
+              </div>
+            </div>
+          </div>
 
-  <!-- Container to hold dynamically created divs -->
-    <!-- HTML structure for the dynamic fields -->
-<div id="dynamicFields">
-      <div class="row mb-3">
-        <div class="col">
-          <label class="label2" style="color:black;" name="addingfield"><b>Field Name</b></label><br>
-          <input type="text" id="field1" style="margin-left:10px;" placeholder="Field Name" /><br>
+          <div class="row mb-3">
+            <div class="col-md-12" id="dynamicFields">
+              <div class="row mb-0">
+              <label for="fields1" class="labels" style="color:black;margin-left:10px;" >Field Name</label>
+              <label for="exampleSelect" class="labels" style="margin-left: 350px;">Selection Box:</label>
+              </div>
+              <div class="row mb-0 col-md-12">
+              <input type="text"  class="input class" style="margin-left:10px;height:35px;" id ="f" name="field[]" placeholder="Field Name">
+              <select class="form-control"  style="margin-left: 240px;width : 20%; height:37px;" id="f" name="selection[]">
+                  <option value="option1">Varchar Field</option>
+                  <option value="option2">Number Field</option>
+                  <option value="option3">Password</option>
+                  <option value="option4">Select Box</option>
+                  <option value="option5">Number Field</option>
+                  <option value="option6">Email</option>
+                  <option value="option7">Radio Button</option>
+                  <option value="option8">Calc Field</option>
+                  <option value="option9">Check Box</option>
+                  <option value="option10">Image</option>
+                  <option value="option11">Logo</option>
+                  <option value="option12">Comment Box</option>
+                  <option value="option13">Button</option>
+                  <option value="option14">Tables</option>
+                  <option value="option15">Video Field</option>
+                  <option value="option16">File Field</option>
+                  <option value="option17">Audio Field</option>
+              </select>
+              <button style="margin-left: 750px; background-color: #92beab;color:black;" type="button" class="btn btn-success ms-1 adding-fields" ><b>+</b></button>
+              </div>
+            </div>         
+          </div>
+        </form>
       </div>
-      <div class="col">
-        <label for="exampleSelect" name="addingselect" class="select box" style="margin-left: 125px;"><b>Selection Box:</b></label>
-        <select class="form-control"  style="margin-left: 135px;width : 80%; height:37px;" id="exampleSelect">
-          <option value="option1">Varchar Field</option>
-          <option value="option2">Number Field</option>
-          <option value="option3">Password</option>
-          <option value="option4">Select Box</option>
-          <option value="option5">Number Field</option>
-          <option value="option6">Email</option>
-          <option value="option7">Radio Button</option>
-          <option value="option8">Calc Field</option>
-          <option value="option9">Check Box</option>
-          <option value="option10">Image</option>
-          <option value="option11">Logo</option>
-          <option value="option12">Comment Box</option>
-          <option value="option13">Button</option>
-          <option value="option14">Tables</option>
-          <option value="option15">Video Field</option>
-          <option value="option16">File Field</option>
-          <option value="option17">Audio Field</option>
-        </select>
-      </div>
-        <div class="ms-auto">
-         <button style="margin-left: 360px; margin-right: 200px; background-color: #92beab;color:black;" type="button" class="btn btn-success" onclick="addDynamicField()"><b>+</b></button>
+    
+  
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function addFormContainer() {
+      const newForm = document.createElement('form');
+      newForm.classList.add('mt-5');
+      newForm.innerHTML = `
+      <div class="container mt-2 pt-0 col-0">
+      <div class="row mb-0">
+        <div class="col-md-3">
+            <label for="forms" class="labels" style="color:black;">Forms</label>
+            <div class="inputs">
+                <input type="text"  class="input-class" id="form" name="labelform" placeholder="Forms" >
+            </div>
+        </div>
+        <div class="col-md-3">
+            <label for="redirect" style="margin-left: 150px; color:black;" class="labels">Redirect path</label>
+            <div class="inputs">
+                <input  id="redirect" class="input-class" style="color:black; margin-left:150px;" placeholder="Redirect Path">
+                <button class="btn btn-success ms-1" style="margin-left: 450px; background-color: #92beab;color:black;" type="button" onclick="removeForm(this)"><b>-</b></button>
+            </div>
         </div>
       </div>
-      
-  
 
-<script>
-  function addDynamicField() {
-    // Counter to keep track of the number of fields
-    let fieldCount = $('#dynamicFields .row').length;
+      <div class="row mb-3">
+        <div class="col-md-12" id="dynamicFields">
+          <div class="row mb-0">
+          <label for="fields1" class="labels" style="color:black;margin-left:10px">Field Name</label>
+          <label for="exampleSelect" class="labels" style="margin-left: 365px;">Selection Box:</label>
+          </div>
+          <div class="row mb-3 col-md-12">
+          <input type="text" class="input-class" style="margin-left:10px;" id="f" name="field[]" placeholder="Field Name">
+          <select class="form-control"  style="margin-left: 250px;width : 20%; height:37px;" id="f" name="selection[]">
+              <option value="option1">Varchar Field</option>
+              <option value="option2">Number Field</option>
+              <option value="option3">Password</option>
+              <option value="option4">Select Box</option>
+              <option value="option5">Number Field</option>
+              <option value="option6">Email</option>
+              <option value="option7">Radio Button</option>
+              <option value="option8">Calc Field</option>
+              <option value="option9">Check Box</option>
+              <option value="option10">Image</option>
+              <option value="option11">Logo</option>
+              <option value="option12">Comment Box</option>
+              <option value="option13">Button</option>
+              <option value="option14">Tables</option>
+              <option value="option15">Video Field</option>
+              <option value="option16">File Field</option>
+              <option value="option17">Audio Field</option>
+          </select>
+          <button style="margin-left: 750px; background-color: #92beab;color:black;" type="button" class="btn btn-success ms-1 adding-fields" onclick="addFieldContainer(this)" ><b>+</b></button>
+          </div>
+        </div>         
+      </div>
+      `;
 
-    // Clone the first field section
-    let newFieldSection = $('#dynamicFields .row').first().clone();
-
-    // Update the ID and placeholder of the field name input
-    let fieldNameInput = newFieldSection.find('input');
-    let oldId = fieldNameInput.attr('id');
-    let newId = oldId.slice(0, -1) + (fieldCount + 1);
-    fieldNameInput.attr('id', newId);
-
-    let oldPlaceholder = fieldNameInput.attr('placeholder');
-    let newPlaceholder = oldPlaceholder + ' ' + (fieldCount + 1);
-    fieldNameInput.attr('placeholder', newPlaceholder);
-
-    // Update the button text to "."
-    let minusButton = newFieldSection.find('button');
-    minusButton.text('-');
-
-    // Change the onclick function to remove the field
-    minusButton.attr('onclick', 'removeDynamicField(this)');
-
-    // Add Bootstrap class for styling
-    minusButton.removeClass('btn-primary'); // Remove any existing class
-    minusButton.addClass('btn btn-danger');
-
-    // Append the new field section to the dynamicFields container
-    $('#dynamicFields').append(newFieldSection);
+      document.querySelector('.tab-pane.active').appendChild(newForm);
   }
 
-  function removeDynamicField(button) {
-    // Remove the parent row of the button
-    $(button).closest('.row').remove();
+  function addFieldContainer(button) {
+      const templateField = button.parentElement.cloneNode(true);
+
+      const minusButton = document.createElement('button');
+      minusButton.classList.add('btn', 'btn-danger', 'ms-1', 'remove-field');
+      minusButton.type = 'button';
+      minusButton.textContent = '-';
+      minusButton.addEventListener('click', function () {
+          templateField.closest('.row').remove();
+      });
+
+      const addButton = templateField.querySelector('.adding-fields');
+      addButton.replaceWith(minusButton);
+
+      // Include the label in the cloned template
+      const label = document.createElement('label');
+      label.classList.add('labels');
+      label.textContent = 'Field Name';
+
+      // Create a new row for the cloned template
+      const newRow = document.createElement('div');
+      newRow.classList.add('row', 'mb-3');
+
+      // Append the label to the new row
+      newRow.appendChild(label);
+
+      // Add Bootstrap classes to the cloned template for sizing
+      templateField.classList.remove('col-md-6'); // Remove original sizing class
+      templateField.classList.add('col-md-3'); // Add new sizing class
+
+      // Append the cloned template to the new row
+      newRow.appendChild(templateField);
+
+      // Insert the new row after the current row
+      button.parentElement.closest('.row').insertAdjacentElement('afterend', newRow);
   }
-</script>
+
+  function removeForm(button) {
+      const formToRemove = button.closest('form');
+      formToRemove.remove();
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+      const addFieldButtons = document.querySelectorAll('.adding-fields');
+      addFieldButtons.forEach(function (button) {
+          button.addEventListener('click', function () {
+            addFieldContainer(button);
+          });
+      });
+
+      document.addEventListener('click', function (event) {
+          if (event.target.classList.contains('remove-field')) {
+              event.target.parentElement.parentElement.remove();
+          }
+      });
+  });
+
+  </script>
 </div>
-</div>
+
+
+
 
       <div class="tab-pane fade" id="tab2content">
       
       </div>
 
-    <div class="tab-pane fade" id="tab3content">
+      <div class="tab-pane fade" id="tab3content">
       
-    </div>
+      </div>
   
+
 
 
 <!-- Include Bootstrap JS (you can download it or link from a CDN) -->
