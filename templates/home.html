@@ -3,208 +3,374 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bootstrap Tabs Example</title>
-  <!-- Include Bootstrap CSS (you can download it or link from a CDN) -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-
-<style>
-  #myTabs{
-    background-color:#A0D6B4;
-    height: 90px;
-    margin-bottom:20px;
-    padding-left: 5px;
-  }
-  #tab1{
-    padding-bottom: 20px;
-    color:black
-  }
-  #tab2{
-    padding-bottom: 20px;
-    color:black
-  }
-  #tab3{
-    padding-bottom: 20px;
-    color:black
-  }
-  .container-fluid {
-    max-width: 100%;
-    padding: 10px;
-    padding-inline-start: 0%;
-    padding-inline-end: 0%;
-  }
-  .nav-tabs .nav-link.active {
-    background-color: #2b7874; /* Set the background color for the active tab */
-   /* Set the font color for the active tab */
-    border-color: #107969; /* Set the border color for the active tab */
-  }
-  .nav-tabs :hover {
-    color: azure;
-    font-size: 20px; 
-  }
-  .nav-tabs .nav-link.active:hover{
-    color: #107969;
-  }
-  #redirect{
-    margin-left: 210px;
-  }
-  .label4{
-    padding-left: 2px;
-  }
-  #field2{
-    margin-left: 14px;
-    height: 30px;
-  }
-  #form{
-    margin-left: 10px;
-  }
-  #field1{
-    margin-left: 10px;
-    height:30px
-  }
-  #form{
-    margin-left: 10px;
-  }
-  .label2{
-    padding-left: 2px;
-  }
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
+  <style>
+    .nav-tabs{
+      background-color:#A0D6B4;
+    }
+    .nav-tabs .nav-link.active {
+      background-color: #107969; /* Set the background color for the active tab */
+     /* Set the font color for the active tab */
+      border-color: #6b958f; /* Set the border color for the active tab */
+    }
+    .nav-tabs :hover {
+      color: white;
+      font-size: 20px; 
+    }
+    .nav-tabs.nav-link.active:hover{
+      color: #107969;
+    }
+    :root {
+      --primary-color: #2b7874;; /* replace with your desired color code */
+    }
+    .bg-custom-primary{
+      background-color: var(--primary-color);
+    }
+    /* Make input boxes smaller */
+    input.form-control, select.form-select {
+      width: 250px; /* Adjust the width as needed */
+    }
+    body {
+      background: #fafafaeb; 
+    }
   
- 
-</style>
+  </style> 
+  <title>WebProject Tabs</title>
 </head>
 <body>
-<div class="container-fluid fixed-top mt-70" style="margin-left:1px;">
-  <ul class="nav nav-tabs" id="myTabs" >
-    <li class="nav-item">
-      <a class="nav-link active m-3 px-5 fs-5" id="tab1" data-toggle="tab" href="#tab1content"><b>Form Creation</b></a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link m-3 px-5 fs-5" id="tab2" data-toggle="tab" href="#tab2content"><b>Alignment</b></a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link m-3 px-5 fs-5" id="tab3" data-toggle="tab" href="#tab3content"><b>Third Tab</b></a>
-    </li>
-  </ul>
 
-  <div class="tab-content mt-3">
-    <div class="tab-pane fade show active" id="tab1content">
-      <div class="container mt-3 pt-10 col-14">
-      <div class="form section">
-        <label class="label1" style="color:black;"><b>Forms</b></label>
-        <label style="margin-left: 350px; color:black;" class="label4" ><b>Redirect Path</b></label><br>
-        <input type="text" id="form" name="labelform" placeholder="Forms" />       
-        <input type="text"  id="redirect" style="color:black" placeholder="Redirect Path" />  
-        <button style="margin-left: 150px; background-color: #92beab;;color:black;" id="button1" class="btn btn-success"><b>+</b></button>
-      </div>
-     <!--- <div id = "existing-container" >
-        <br>
-        <label class="label2" style="color:black" name="addingfield"><b>Field Name</b></label>
-        <label for="exampleSelect" name="addingselect" class="select box" style="margin-left: 300px;"><b>Selection Box:</b></label><br>
-        <div class="container mt-0">
-          <div class="row">
-            <input type="text" id="field1" placeholder="Field Name" />
-            <select class="form-control"  style="margin-left: 200px;width : 20%;" id="exampleSelect">
-              <option value="option1">Option 1</option>
-              <option value="option2">Option 2</option>
-              <option value="option3">Option 3</option>
-        
-            </select>
-          <button style="margin-left: 130px; background-color: #92beab; color:black;" id="button2" onclick="addDynamicField()" class="btn btn-success"><b>+</b></button>
-          
-      </div>
-    </div>   -->
-
-  <!-- Container to hold dynamically created divs -->
-    <!-- HTML structure for the dynamic fields -->
-<div id="dynamicFields">
-      <div class="row mb-3">
-        <div class="col">
-          <label class="label2" style="color:black;" name="addingfield"><b>Field Name</b></label><br>
-          <input type="text" id="field1" style="margin-left:10px;" placeholder="Field Name" /><br>
-      </div>
-      <div class="col">
-        <label for="exampleSelect" name="addingselect" class="select box" style="margin-left: 125px;"><b>Selection Box:</b></label>
-        <select class="form-control"  style="margin-left: 135px;width : 80%; height:37px;" id="exampleSelect">
-          <option value="option1">Varchar Field</option>
-          <option value="option2">Number Field</option>
-          <option value="option3">Password</option>
-          <option value="option4">Select Box</option>
-          <option value="option5">Number Field</option>
-          <option value="option6">Email</option>
-          <option value="option7">Radio Button</option>
-          <option value="option8">Calc Field</option>
-          <option value="option9">Check Box</option>
-          <option value="option10">Image</option>
-          <option value="option11">Logo</option>
-          <option value="option12">Comment Box</option>
-          <option value="option13">Button</option>
-          <option value="option14">Tables</option>
-          <option value="option15">Video Field</option>
-          <option value="option16">File Field</option>
-          <option value="option17">Audio Field</option>
-        </select>
-      </div>
-        <div class="ms-auto">
-         <button style="margin-left: 360px; margin-right: 200px; background-color: #92beab;color:black;" type="button" class="btn btn-success" onclick="addDynamicField()"><b>+</b></button>
+        <div class="bg-custom-primary">
+          <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <a class="nav-link active m-3 px-5 fs-5 text-dark" id="Tab1" data-bs-toggle="tab" href="#tab1Content"><b>Form Content</b></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link m-3 px-5 fs-5 text-dark" id="Tab2" data-bs-toggle="tab" href="#tab2Content"><b>Alignment</b></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link m-3 px-5 fs-5 text-dark" id="Tab3" data-bs-toggle="tab" href="#tab3Content"><b>Tab</b></a>
+            </li>
+          </ul>
         </div>
-      </div>
+
+        <div class="mt-3 mx-5 p-2 text-dark">
+            <div class="tab-content mt-4">
+              <div class="tab-pane fade show active" id="tab1Content" role="tabpanel">
+                  <div id="formsContainer">
+                      <form class="dynamic-form" id="form1">
+                          <div class="row mb-3">
+                              <div class="col-md-3">
+                                  <label class="form-label">Form</label>
+                                  <div class="input-group">
+                                      <input type="text" class="form-control size" name="form1" placeholder="form1">
+                                  </div>
+                              </div>
+                              <div class="col-md-3">
+                                  <label class="form-label">Redirect path</label>
+                                  <div class="input-group">
+                                      <input type="text" class="form-control size" name= "form1 redirect path" placeholder="form1 Redirect Path">
+                                      <button class="btn btn-success ms-5 add-form" style="background-color: #92beab;color:black;" type="button"><b>+</b></button>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="row mb-3">
+                              <div class="col-md-9 dynamic-field">
+                                  <label class="form-label">Field Name 1</label>
+                                  <label for="fieldType" style="margin-left:290px" class="form-label" id="form-name">Selection Box</label>                                                          
+                                  <div class="input-group">
+                                      <input type="text" class="form-control" name="form1|field1" placeholder="form1 Field name 1">
+                                      <select class="form-select ms-1" name="form1 selection1">
+                                        <option value="Varchar Field">Varchar Field</option>
+                                        <option value="Number Field">Number Field</option>
+                                        <option value="Password">Password</option>
+                                        <option value="Select Box">Select Box</option>
+                                        <option value="Number Field">Number Field</option>
+                                        <option value="Email">Email</option>
+                                        <option value="Radio Button">Radio Button</option>
+                                        <option value="Calc Field">Calc Field</option>
+                                        <option value="Check Box">Check Box</option>
+                                        <option value="Image">Image</option>
+                                        <option value="Logo">Logo</option>
+                                        <option value="Comment Box">Comment Box</option>
+                                        <option value="Button">Button</option>
+                                        <option value="Tables">Tables</option>
+                                        <option value="Video Field">Video Field</option>
+                                        <option value="File Field">File Field</option>
+                                        <option value="Audio Field">Audio Field</option>
+                                      </select>                                    
+                                      <div class="row">
+                                        <div class="col-mb-4">                      
+                                            <input type="hidden" class="checkbox"  name="form1|required|1"  value="0" >
+                                            <input type="checkbox" class="checkbox" value="1" name="form1|required|1"  />
+                                            <label for="checkbox1">Required</label>
+                                            <input type="hidden" class="checkbox"  name="form1|readable|1"  value="0" >
+                                            <input type="checkbox" class="checkbox" name="form1|readable|1" value="1"  >
+                                            <label for="checkbox2">Readable</label>            
+                                        </div>
+                                      </div>              
+                                      <button class="btn btn-success ms-5 add-field" style="background-color: #92beab;color:black;" type="button"><b>+</b></button>
+                                  </div>
+                              </div>
+                          </div>
+                      </form>
+                  </div>
+                  <div class="row mb-0">
+                    <div class="col-md-8">
+                        <!-- Submit button -->
+                          <button id="submitBtn" class="btn btn-primary" style ="margin-left:25px;">Submit</button>
+                          <button type="button" class="btn btn-secondary ms-2 cancel-form">Cancel</button>
+                          <button type="reset" class="btn btn-danger ms-2 Reset">Reset</button>
+                    </div>
+                  </div>
+              </div>
+          </div>
+        </div>
       
-  
-
-<script>
-  function addDynamicField() {
-    // Counter to keep track of the number of fields
-    let fieldCount = $('#dynamicFields .row').length;
-
-    // Clone the first field section
-    let newFieldSection = $('#dynamicFields .row').first().clone();
-
-    // Update the ID and placeholder of the field name input
-    let fieldNameInput = newFieldSection.find('input');
-    let oldId = fieldNameInput.attr('id');
-    let newId = oldId.slice(0, -1) + (fieldCount + 1);
-    fieldNameInput.attr('id', newId);
-
-    let oldPlaceholder = fieldNameInput.attr('placeholder');
-    let newPlaceholder = oldPlaceholder + ' ' + (fieldCount + 1);
-    fieldNameInput.attr('placeholder', newPlaceholder);
-
-    // Update the button text to "."
-    let minusButton = newFieldSection.find('button');
-    minusButton.text('-');
-
-    // Change the onclick function to remove the field
-    minusButton.attr('onclick', 'removeDynamicField(this)');
-
-    // Add Bootstrap class for styling
-    minusButton.removeClass('btn-primary'); // Remove any existing class
-    minusButton.addClass('btn btn-danger');
-
-    // Append the new field section to the dynamicFields container
-    $('#dynamicFields').append(newFieldSection);
-  }
-
-  function removeDynamicField(button) {
-    // Remove the parent row of the button
-    $(button).closest('.row').remove();
-  }
-</script>
-</div>
-</div>
-
-      <div class="tab-pane fade" id="tab2content">
+          
       
-      </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <script>
+        $(document).ready(function () {
+            var formCounter = 1;
+            function generateFormHtml(formId) {
+                return `
+                    <form class="dynamic-form" id="${formId}">
+                        <div class="row mb-3">
+                            <div class="col-md-3">
+                                <label for="${formId}-forms" class="form-label">${formId}</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control size" id="${formId}-forms"  name="${formId}" placeholder="${formId}">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="${formId}-redirect" class="form-label">${formId}</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control size" id="${formId}-redirect path" name="${formId}|redirect path"  placeholder="${formId} Redirect Path">
+                                    <button class="btn btn-success ms-5 add-form" style="background-color: #92beab;color:black;" type="button">+</button>
+                                </div>
+                            </div>
+                        </div>
 
-    <div class="tab-pane fade" id="tab3content">
-      
-    </div>
-  
+                        
+                        <div class="row mb-3">
+                            <div class="col-md-9 dynamic-field">
+                                <label for="${formId}-field1" class="form-label">${formId}</label>
+                                <label for="fieldType" style="margin-left:230px" id="form-name">Selection Box</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control size" id="${formId}-field" name="${formId}|field1" placeholder="${formId} Field Name 1">
+                                    <select class="form-select ms-1" name="${formId}|selection1">
+                                      <option value="Varchar Field">Varchar Field</option>
+                                      <option value="Number Field">Number Field</option>
+                                      <option value="Password">Password</option>
+                                      <option value="Select Box">Select Box</option>
+                                      <option value="Number Field">Number Field</option>
+                                      <option value="Email">Email</option>
+                                      <option value="Radio Button">Radio Button</option>
+                                      <option value="Calc Field">Calc Field</option>
+                                      <option value="Check Box">Check Box</option>
+                                      <option value="Image">Image</option>
+                                      <option value="Logo">Logo</option>
+                                      <option value="Comment Box">Comment Box</option>
+                                      <option value="Button">Button</option>
+                                      <option value="Tables">Tables</option>
+                                      <option value="Video Field">Video Field</option>
+                                      <option value="File Field">File Field</option>
+                                      <option value="Audio Field">Audio Field</option>
+                                        <!-- Add other options as needed -->
+                                    </select>
+                                    <div class="row">
+                                      <div class="col-mb-4">                  
+                                        <input type="hidden" class="checkbox"  name="${formId}|required|1"  value="0" >
+                                        <input type="checkbox" class="checkbox" value="1"  name="${formId}|required|1"  >
+                                        <label for="checkbox1">Required</label>
+                                        <input type="hidden" class="checkbox"   name="${formId}|readable|1" value="0" >
+                                        <input type="checkbox" class="checkbox"  name="${formId}|readable|1" value="1" >
+                                        <label for="checkbox2">Readable</label>                             
+                                      </div>
+                                    </div>      
+                                    <button class="btn btn-success ms-5 add-field" style="background-color: #92beab;color:black;" type="button">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                `;
+            }
 
+            function addForm() {
+                var newFormId = getNextFormNumber();
+                var newFormHtml = generateFormHtml(newFormId);
+                var newForm = $(newFormHtml);
+                newForm.find('.add-form').removeClass('add-form').addClass('remove-form').html('-');
+                newForm.find('input[type="text"]').val('');
+                newForm.find('.form-label').each(function (index) {
+                    var labelType = index === 0 ? '' : (index === 1 ? 'Redirect path' : 'Field Name');
+                    $(this).text(`${newFormId}  ${labelType} `);
+                });
+                $('#formsContainer').append(newForm);
+            }
 
-<!-- Include Bootstrap JS (you can download it or link from a CDN) -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+            function removeForm() {
+                $(this).closest(".dynamic-form").remove();
+            }
+            $("#formsContainer").on("click", ".add-form", addForm);
+            $("#formsContainer").on("click", ".remove-form", removeForm);
+            function addField(formId, fieldCounter) {
+                var newFieldId = "field" + fieldCounter;
+                var fieldName = `${formId}-field${fieldCounter}`;
+            
+                // Check if the field name already exists
+                while ($(`[name="${fieldName}"]`).length > 0) {
+                    fieldCounter++;
+                    newFieldId = "field" + fieldCounter;
+                    fieldName = `${formId}-field${fieldCounter}`;
+                }
+                
+                var newField = `
+                    <div class="row mb-3">
+                        <div class="col-md-9 dynamic-field">
+                            <label for="${newFieldId}" class="form-label">Field name ${fieldCounter} </label>
+                            <label for="${newFieldId}" style="margin-left:270px" id="form-name">Selection Box  ${fieldCounter}</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control size" id="${formId}-${newFieldId}" name="${formId}|field${fieldCounter}" placeholder="${formId} Field name ${fieldCounter}">
+                                <select class="form-select ms-1" name="${formId}|selection${fieldCounter}">
+                                  <option value="Varchar Field">Varchar Field</option>
+                                  <option value="Number Field">Number Field</option>
+                                  <option value="Password">Password</option>
+                                  <option value="Select Box">Select Box</option>
+                                  <option value="Number Field">Number Field</option>
+                                  <option value="Email">Email</option>
+                                  <option value="Radio Button">Radio Button</option>
+                                  <option value="Calc Field">Calc Field</option>
+                                  <option value="Check Box">Check Box</option>
+                                  <option value="Image">Image</option>
+                                  <option value="Logo">Logo</option>
+                                  <option value="Comment Box">Comment Box</option>
+                                  <option value="Button">Button</option>
+                                  <option value="Tables">Tables</option>
+                                  <option value="Video Field">Video Field</option>
+                                  <option value="File Field">File Field</option>
+                                  <option value="Audio Field">Audio Field</option>
+                                    <!-- Add other options as needed -->
+                                </select>
+                                <div class="row">
+                                  <div class="col-mb-4">              
+                                    <input type="hidden" class="checkbox-${formId}"  name="${formId}|required|${fieldCounter}"  value="0" />
+                                    <input type="checkbox" class="checkbox-${formId}" value="1"  name="${formId}|required|${fieldCounter}"  />
+                                    <label for="checkbox1">Required</label>
+                                    <input type="hidden" class="checkbox-${formId}"  name="${formId}|readable|${fieldCounter}" value="0" />
+                                    <input type="checkbox" class="checkbox-${formId}"  name="${formId}|readable|${fieldCounter}"value="1"  />
+                                    <label for="checkbox2">Readable</label>  
+                                </div>
+                                </div>      
+                                <button class="btn btn-danger ms-5 remove-field" name="removebutton" type="button">-</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                $('#' + formId).append(newField);
+            }
+
+            function removeField() {
+                $(this).closest(".row").remove();
+            }
+
+            $("#formsContainer").on("click", ".add-field", function () {
+                var formId = $(this).closest('.dynamic-form').attr('id');
+                var fieldCounter = $('#' + formId).find('.dynamic-field').length + 1;
+                addField(formId, fieldCounter);
+            });
+
+            $("#formsContainer").on("click", ".remove-field", removeField);
+
+            function getNextFormNumber() {
+                var existingFormIds = $('.dynamic-form').map(function () {
+                    return parseInt(this.id.replace('form', ''), 10);
+                }).get();
+
+                if (existingFormIds.length === 0) {
+                    return 'form2';
+                }
+
+                var maxFormId = Math.max.apply(null, existingFormIds);
+                return 'form' + (maxFormId + 1);
+            }
+            $(document).ready(function() {
+                $('.Reset').click(function() {
+                    // Clear all inputs and checkboxes
+                    $('form :input').val('');
+                    $('form :checkbox').prop('checked', false);
+                    
+                    // Reset select boxes
+                    $('form select').prop('selectedIndex', 0);
+                });
+            });
+            $(document).ready(function () {
+              $('#submitBtn').on('click', function () {
+                
+                  var formDataArray = $('form').serializeArray();
+                  var formDataJSON = {};
+                  $.each(formDataArray, function(index, field){
+                      formDataJSON[field.name] = field.value;
+                  });
+          
+                  $.ajax({
+                      type: 'POST',
+                      url: '/submit_form_data/',  
+                      data: formDataJSON,
+                      success: function (response) {
+                          if (response.success) {
+                              console.log(formDataJSON);
+                              console.log('Form data submitted successfully!');
+                              alert("Form data submitted successfully!");
+                              //$('form').trigger('reset');
+                          } else {
+                              console.error('Failed to submit form data.');
+                              alert("Failed to submit form data.");
+                          }
+                      },
+                      error: function(jqXHR, textStatus, errorThrown) {
+                          console.error("AJAX Error: " + textStatus, errorThrown);
+                          alert("Failed to submit form data.");
+                      }
+                  });
+              });
+          });
+          $(document).ready(function () {
+            $('#submitBtn').on('click', function () {
+                var formDataArray = $('form').serializeArray();
+                var formDataJSON = {};
+                $.each(formDataArray, function(index, field){
+                    formDataJSON[field.name] = field.value;
+                });
+        
+                $.ajax({
+                    type: 'POST',
+                    url: '/submit_field_data/',  
+                    data: formDataJSON,
+                    success: function (response) {
+                        if (response.success) {
+                            console.log(formDataJSON);
+                            console.log('Field data submitted successfully!');
+                            alert("Field data submitted successfully!");
+                            //$('form').trigger('reset');
+                        } else {
+                            console.error('Failed to submit Field data.');
+                            alert("Failed to submit Field data.");
+                        }
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        console.error("AJAX Error: " + textStatus, errorThrown);
+                        alert("Failed to submit form data.");
+                    }
+                });
+            });
+        });
+            
+        });
+        
+
+  </script>
 </body>
 </html>
