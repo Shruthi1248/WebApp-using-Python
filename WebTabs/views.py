@@ -79,3 +79,18 @@ def submit_field_data(request):
             return JsonResponse({'success': False, 'error': str(e)})
 
     return JsonResponse({'success': False, 'error': 'Method not allowed'}, status=405)
+
+@csrf_exempt
+def page1(request):
+    
+    return render (request,'page1.html')
+
+@csrf_exempt
+def page2(request):
+    
+    return render (request,'page2.html')
+
+@csrf_exempt
+def page3(request):
+    
+    return render (request,'page3.html')

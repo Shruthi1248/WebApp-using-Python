@@ -6,4 +6,4 @@ dataBase= mysql.connector.connect(
 )
 cursorObject =dataBase.cursor()
 cursorObject.execute("CREATE DATABASE websitedb")
-print("All done")
+print("All done")
