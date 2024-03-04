@@ -1,6 +1,7 @@
 from django.urls import path
 
 from . import views
+from .views import save_project
 
 urlpatterns = [
     path('', views.home, name="home"),
@@ -9,5 +10,6 @@ urlpatterns = [
     path('page1/', views.page1, name='page1'),
     path('page2/', views.page2, name='page2'),
     path('page3/', views.page3, name='page3'),
+    path('save_project/', save_project, name='save_project'),
 ]
 
