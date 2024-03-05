@@ -290,12 +290,12 @@
             display: grid;
             width: 100%;
             height: 450px;
-            background: rgba(0, 123, 255, 0.1);
+            background: rgb(234, 234, 234);
             position: relative;
         }
 
         .grid-item {
-            border: 1px solid #2247ad;
+            border: 1px solid #4fc5da;
             padding: 20px;
         }
 
@@ -303,23 +303,6 @@
             position: absolute;
             padding: 10px;
             cursor: move;
-        }
-
-        .form1-values {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-        }
-
-        .form-values label {
-            font-size: 18px;
-        }
-
-        .form1-fieldname {
-            position: absolute;
-            top: 50px;
-
-            left: 10px;
         }
     </style>
     <title>WebProject Tabs</title>
@@ -335,7 +318,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link m-3 px-5 fs-5" style="color:white;" id="Tab2" data-bs-toggle="tab"
-                    href="#tab2Content"><b>Alignment</b></a>
+                    href="#tabContent2"><b>Alignment</b></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link m-3 px-5 fs-5" style="color:white;" id="Tab3" data-bs-toggle="tab"
@@ -348,8 +331,8 @@
         <div class="tab-content mt-4">
             <div class="tab-pane fade show active" id="tab1Content" role="tabpanel">
                 <form id="projectForm" class="mb-3">
-                    <input id="searchInput" type="text" class="form-control mb-3 col-md-6" placeholder="Search...">
-                    <input id="projectName" type="text" placeholder="Enter project name">
+                    <input id="searchInput" type="text" class="form-control mb-3 col-md-6" placeholder="Search..." />
+                    <input id="projectName" type="text" placeholder="Enter project name" />
                     <button type="submit" class="btn btn-grad1">Submit</button>
                     <span id="errorMessage"></span>
                 </form>
@@ -436,8 +419,8 @@
             </div>
 
 
-            <div class="tab-pane fade" id="tab2Content">
-                <div class="grid-container">
+            <div class="tab-pane fade" id="tabContent2">
+                <div class="grid-container" style="width: 1650px,height 800px">
                     <div class="grid-item"></div>
                 </div>
             </div>
@@ -448,6 +431,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script>
         $(document).ready(function () {
             var formCounter = 1;
@@ -577,8 +561,7 @@
                                             <option value="Video Field">Video Field</option>
                                             <option value="File Field">File Field</option>
                                             <option value="Audio Field">Audio Field</option>
-                                                <!-- Add other options as needed -->
-                                            </select>
+                                                </select>
                                 <div class="col-md-6 checkboxes">                   
             
                                     <input type="hidden" class="checkbox-${formId}"  name="${formId}|required|${fieldCounter}"  value="0" />
@@ -736,6 +719,73 @@
                 });
             });
         });
+        $(document).ready(function () {
+            var formCounter = 1;
+
+            function previewFormValues() {
+                if ($(this).hasClass('Preview')) {
+                    $("#Tab2").tab("show");
+                }
+
+                $(".grid-item").empty();
+                var totalHeight = 0;
+
+                $(".dynamic-form").each(function (index, form) {
+                    var formId = $(form).attr("id");
+                    var formName = $(form).find('input[name="' + formId + '"]').val().trim();
+
+                    if (formName !== "") {
+                        var formNameHtml =
+                            '<div class="draggable-label form-values" style="top: ' +
+                            totalHeight +
+                            'px;"><label>' +
+                            formName +
+                            "</label></div>";
+                        $(".grid-item").append(formNameHtml);
+                        totalHeight += 30;
+                    }
+
+                    var fieldTopOffset = 30;
+                    $(form).find('.dynamic-field').each(function () {
+                        var fieldName = $(this).find('input[type="text"]').val().trim();
+                        if (fieldName !== "") {
+                            var fieldValueHtml =
+                                '<div class="draggable-label form-fieldname" style="top: ' +
+                                totalHeight +
+                                'px;"><label>' +
+                                fieldName +
+                                "</label></div>";
+                            $(".grid-item").append(fieldValueHtml);
+                            totalHeight += 30;
+                        }
+                    });
+
+                    $(form).find('select').each(function () {
+                        var selectedOption = $(this).val().trim();
+                        if (selectedOption !== "") {
+                            var selectedOptionHtml =
+                                '<div class="draggable-label selected-option" style="top: ' +
+                                totalHeight +
+                                'px;"><label>' +
+                                selectedOption +
+                                "</label></div>";
+                            $(".grid-item").append(selectedOptionHtml);
+                            totalHeight += 30;
+                        }
+                    });
+                });
+
+                $(".grid-container").css("height", totalHeight + "px");
+
+                $(".draggable-label").draggable({
+                    containment: ".grid-container",
+                    scroll: false,
+                });
+            }
+
+            $(".Preview").click(previewFormValues);
+        });
+
 
 
     </script>
