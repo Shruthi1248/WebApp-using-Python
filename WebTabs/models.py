@@ -18,3 +18,6 @@ class FieldData(models.Model):
     
     def str(self):
         return f"{self.field_key}"
+
+class Project(models.Model):
+    name = models.CharField(max_length=255, unique=True)
