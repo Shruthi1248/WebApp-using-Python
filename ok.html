@@ -197,30 +197,6 @@
             text-decoration: none;
         }
 
-        .grid-container {
-            display: grid;
-            width: 100%;
-            height: 450px;
-            background: rgb(234, 234, 234);
-            position: relative;
-        }
-
-        .grid-item {
-            border: 1px solid #4fc5da;
-            padding: 20px;
-        }
-
-        .draggable-label {
-            position: absolute;
-            padding: 2px;
-            cursor: move;
-            background-color: rgb(255, 255, 255);
-            border-radius: 5px;
-            font-weight: 400;
-            color: black;
-            margin-top: 5px;
-        }
-
 
         /* Mobile devices (portrait and landscape) */
         @media only screen and (max-width: 768px) {
@@ -330,6 +306,25 @@
             }
 
         }
+
+        .grid-container {
+            display: grid;
+            width: 100%;
+            height: 450px;
+            background: rgb(234, 234, 234);
+            position: relative;
+        }
+
+        .grid-item {
+            border: 1px solid #4fc5da;
+            padding: 20px;
+        }
+
+        .draggable-label {
+            position: absolute;
+            padding: 10px;
+            cursor: move;
+        }
     </style>
     <title>WebProject Tabs</title>
 </head>
@@ -390,8 +385,8 @@
                                 </div>
                             </div>
                             <div class="col">
-                                <label for="fieldType" style="margin-left:7px" class="form-label" id="form-name">Field
-                                    Type</label>
+                                <label for="fieldType" style="margin-left:7px" class="form-label"
+                                    id="form-name">Selection Box</label>
                                 <div class="input-group">
                                     <select class="form-select ms-1" name="form1 selection1">
                                         <option value="Varchar Field">Varchar Field</option>
@@ -446,7 +441,7 @@
 
 
             <div class="tab-pane fade" id="tabContent2">
-                <div class="grid-container" style="margin-right:100px;">
+                <div class="grid-container" style="margin-right:100px;color:rgb(113, 111, 111)">
                     <div class="grid-item"></div>
                 </div>
                 <button type="button" id="okbtn" style="padding-top:5px;" class="btn btn-grad5">OK</button>
@@ -490,7 +485,7 @@
                                         </div>
                                     </div> 
                                     <div class="col">
-                                        <label for="fieldType" style="margin-left:7px;padding-top:1rem;margin-bottom: 0.5rem;" id="form-name">Field Type</label>
+                                        <label for="fieldType" style="margin-left:7px;padding-top:1rem;margin-bottom: 0.5rem;" id="form-name">Selection Box</label>
                                             <div class="input-group">
                                                 <select class="form-select ms-1" name="${formId}|selection1">
                                                 <option value="Varchar Field">Varchar Field</option>
@@ -567,7 +562,7 @@
                                     </div>
                                 </div>
                                 <div class="col">  
-                                    <label for="${newFieldId}" style="margin-left:7px;padding-top:1rem;margin-bottom: 0.5rem;" id="form-name">Field Type  ${fieldCounter}</label>
+                                    <label for="${newFieldId}" style="margin-left:7px;padding-top:1rem;margin-bottom: 0.5rem;" id="form-name">Selection Box  ${fieldCounter}</label>
                                         <div class="input-group">
                                             
                                             <select class="form-select ms-1" name="${formId}|selection${fieldCounter}">
@@ -723,17 +718,6 @@
                 }
             });
         });
-        $(document).ready(function () {
-            $('#okbtn').on('click', function () {
-                // Remove active class from alignmentTab and add it to formCreationTab
-                $('#tabContent2').removeClass('show active');
-                $('#tab1Content').addClass('show active');
-
-                // Remove active class from nav-link of alignmentTab and add it to nav-link of formCreationTab
-                $('a[href="#tabContent2"]').removeClass('active');
-                $('a[href="#tab1Content"]').addClass('active');
-            });
-        });
 
 
         // search js
@@ -794,6 +778,7 @@
                 $(".dynamic-form").each(function (index, form) {
                     var formId = $(form).attr("id");
                     var formName = $(form).find('input[name="' + formId + '"]').val().trim();
+
                     if (formName !== "") {
                         var formNameHtml =
                             '<div class="draggable-label form-values" style="top: ' +
@@ -805,9 +790,6 @@
                         totalHeight += 30;
                     }
 
-
-
-                    var fieldTopOffset = 30;
                     $(form).find('.dynamic-field').each(function () {
                         var fieldName = $(this).find('input[type="text"]').val().trim();
                         if (fieldName !== "") {
@@ -818,7 +800,7 @@
                                 fieldName +
                                 "</label></div>";
                             $(".grid-item").append(fieldValueHtml);
-                            totalHeight += 30;
+                            totalHeight += 40;
                         }
                     });
 
@@ -827,22 +809,21 @@
                         if (selectedFieldType !== "") {
                             var inputField = '';
 
-
                             if (selectedFieldType === "Varchar Field") {
-                                inputField = '<input type="text" class="form-control" placeholder="Varchar Field" readonly ' + 'style="width: 200px;">';
+                                inputField = '<input type="text" class="form-control" placeholder="Varchar Field" readonly style="width: 200px;">';
                             } else if (selectedFieldType === "Number Field") {
-                                inputField = '<input type="number" class="form-control" placeholder="Number Field" readonly ' + 'style="width: 200px;">';
+                                inputField = '<input type="number" class="form-control" placeholder="Number Field" readonly style="width: 200px;">';
                             } else if (selectedFieldType === "Password") {
                                 inputField = '<input type="password" class="form-control" placeholder="Password" readonly style="width: 200px;">';
                             } else if (selectedFieldType === "Select Box") {
                                 inputField = '<select class="form-select" style="width: 200px;" disabled><option>Option 1</option><option>Option 2</option><option>Option 3</option></select>';
                             } else if (selectedFieldType === "Email") {
-                                inputField = '<input type="email" class="form-control" placeholder="Email" readonly ' + 'style="width: 200px;">';
+                                inputField = '<input type="email" class="form-control" placeholder="Email" readonly style="width: 200px;">';
                             } else if (selectedFieldType === "Radio Button") {
                                 inputField = '<input type="radio" name="' + formId + '" value="Yes" readonly> Yes<br>' +
                                     '<input type="radio" name="' + formId + '" value="No" readonly> No<br>';
                             } else if (selectedFieldType === "Calc Field") {
-                                inputField = '<input type="number" class="form-control" placeholder="Calc Field" readonly ' + 'style="width: 200px;">';
+                                inputField = '<input type="number" class="form-control" placeholder="Calc Field" readonly style="width: 200px;">';
                             } else if (selectedFieldType === "Check Box") {
                                 inputField = '<input type="checkbox" name="' + formId + '" value="Option 1" readonly> Option 1<br>' +
                                     '<input type="checkbox" name="' + formId + '" value="Option 2" readonly> Option 2<br>';
@@ -871,7 +852,7 @@
                                 totalHeight +
                                 'px;">' + inputField + '</div>';
                             $(".grid-item").append(selectedFieldTypeHtml);
-                            totalHeight += 30;
+                            totalHeight += 40;
                         }
                     });
                 });
@@ -898,6 +879,7 @@
                     }
                 });
             }
+
             $(".Preview").click(previewFormValues);
 
             // Function to check collision between two elements

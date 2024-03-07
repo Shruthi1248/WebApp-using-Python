@@ -11,5 +11,7 @@ urlpatterns = [
     path('page2/', views.page2, name='page2'),
     path('page3/', views.page3, name='page3'),
     path('save_project/', save_project, name='save_project'),
+    
 ]
+
 
