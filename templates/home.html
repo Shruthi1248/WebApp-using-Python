@@ -220,116 +220,6 @@
             color: black;
             margin-top: 5px;
         }
-
-
-        /* Mobile devices (portrait and landscape) */
-        @media only screen and (max-width: 768px) {
-
-            input.form-control,
-            select.form-select {
-                width: 100%;
-            }
-
-            .buttons {
-                margin-left: 1rem;
-            }
-
-            .nav-tabs {
-                width: 100%;
-                padding-top: 0px;
-            }
-
-            .form-label {
-                padding-top: 1rem;
-            }
-
-            .btn-grad {
-                row-gap: 1rem;
-            }
-
-            .checkboxes {
-                padding-top: 0.2rem;
-            }
-
-            .nav-tabs .nav-link {
-                font-size: 0.5rem;
-            }
-
-            .nav-tabs .nav-link {
-                line-height: 10px;
-                height: 35px;
-            }
-        }
-
-        @media only screen and (min-width: 768px) and (max-width: 1024px) {
-
-            /* Adjust styles for tablets and larger devices here */
-            input.form-control,
-            select.form-select {
-                min-width: 50%;
-            }
-
-            .form-label {
-                min-width: 50%;
-                padding: 1rem;
-            }
-
-            .btn-grad3 {
-                padding-left: 0px;
-                width: 10%;
-                display: flex;
-                flex-direction: column;
-            }
-
-            .btn-grad4 {
-                padding-left: 1rem;
-                display: flex;
-                flex-direction: column;
-            }
-
-            .btn-grad {
-                row-gap: 1rem;
-            }
-
-            .checkboxes {
-                padding-top: 0.2rem;
-            }
-
-            .nav-tabs .nav-link {
-                font-size: 1rem;
-            }
-
-            .nav-tabs .nav-link {
-                line-height: 10px;
-                height: 35px;
-            }
-        }
-
-        /* Laptops and desktops */
-        @media only screen and (min-width: 1024px) {
-
-            input.form-control,
-            select.form-select {
-                width: 25%;
-            }
-
-            .form-label {
-                padding-top: 1rem;
-            }
-
-            .btn-grad {
-                row-gap: 1rem;
-            }
-
-            .checkboxes {
-                padding-top: 0.2rem;
-            }
-
-            .nav-tabs .nav-link {
-                font-size: 2.5rem;
-            }
-
-        }
     </style>
     <title>WebProject Tabs</title>
 </head>
@@ -794,16 +684,6 @@
                 $(".dynamic-form").each(function (index, form) {
                     var formId = $(form).attr("id");
                     var formName = $(form).find('input[name="' + formId + '"]').val().trim();
-                    if (formName !== "") {
-                        var formNameHtml =
-                            '<div class="draggable-label form-values" style="top: ' +
-                            totalHeight +
-                            'px;"><label>' +
-                            formName +
-                            "</label></div>";
-                        $(".grid-item").append(formNameHtml);
-                        totalHeight += 30;
-                    }
 
 
 
@@ -818,7 +698,7 @@
                                 fieldName +
                                 "</label></div>";
                             $(".grid-item").append(fieldValueHtml);
-                            totalHeight += 30;
+                            totalHeight += 40;
                         }
                     });
 
@@ -871,7 +751,7 @@
                                 totalHeight +
                                 'px;">' + inputField + '</div>';
                             $(".grid-item").append(selectedFieldTypeHtml);
-                            totalHeight += 30;
+                            totalHeight += 40;
                         }
                     });
                 });
